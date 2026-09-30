@@ -95,3 +95,21 @@ a{color:inherit;text-decoration:none}button,input,select{font:inherit}button,a{-
 }
 /* Let the desktop menu band stretch past the nav container padding */
 @media(min-width:701px){.site-header .nav-links{width:auto}}
+
+/* Team portraits floating into age group hero */
+.subpage-hero{position:relative;isolation:isolate;overflow:hidden}
+.hero-team-photos{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.hero-team-photo{position:absolute;display:block;width:clamp(62px,8vw,108px);height:clamp(76px,10vw,132px);object-fit:cover;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.32);opacity:.8;animation:team-photo-float .95s cubic-bezier(.2,.75,.25,1) both;will-change:transform,opacity}
+.subpage-hero>.section-kicker,.subpage-hero>h1,.subpage-hero>.subpage-lead{position:relative;z-index:1}
+.hero-team-photo-01{left:5%;top:12%;--team-start-x:-180px;--team-start-y:-100px;--team-tilt:-18deg;--team-tilt-end:-8deg;animation-delay:.04s}
+.hero-team-photo-02{right:7%;top:9%;--team-start-x:190px;--team-start-y:-120px;--team-tilt:17deg;--team-tilt-end:8deg;animation-delay:.18s}
+.hero-team-photo-03{left:17%;bottom:8%;--team-start-x:-210px;--team-start-y:130px;--team-tilt:22deg;--team-tilt-end:10deg;animation-delay:.3s}
+.hero-team-photo-04{right:20%;bottom:7%;--team-start-x:200px;--team-start-y:150px;--team-tilt:-21deg;--team-tilt-end:-9deg;animation-delay:.42s}
+.hero-team-photo-05{left:36%;top:8%;--team-start-x:-80px;--team-start-y:-190px;--team-tilt:-14deg;--team-tilt-end:-4deg;animation-delay:.55s}
+.hero-team-photo-06{right:36%;bottom:5%;--team-start-x:90px;--team-start-y:190px;--team-tilt:19deg;--team-tilt-end:7deg;animation-delay:.68s}
+.hero-team-photo-07{right:4%;bottom:8%;--team-start-x:220px;--team-start-y:120px;--team-tilt:-16deg;--team-tilt-end:-6deg;animation-delay:.8s}
+.hero-team-photo-08{right:4%;bottom:8%;--team-start-x:220px;--team-start-y:120px;--team-tilt:-16deg;--team-tilt-end:-6deg;animation-delay:.8s}
+@keyframes team-photo-float{from{opacity:0;transform:translate(var(--team-start-x),var(--team-start-y)) rotate(var(--team-tilt)) scale(.72)}to{opacity:.8;transform:translate(0,0) rotate(var(--team-tilt-end)) scale(1)}}
+@media(max-width:700px){.hero-team-photo{width:clamp(38px,12vw,58px);height:clamp(48px,15vw,72px);border-radius:8px;opacity:.55}.hero-team-photo-01{left:3%;top:7%}.hero-team-photo-02{right:3%;top:6%}.hero-team-photo-03{left:5%;bottom:5%}.hero-team-photo-04{right:7%;bottom:5%}.hero-team-photo-05{left:27%;top:4%}.hero-team-photo-06{right:27%;bottom:3%}.hero-team-photo-07{right:3%;top:40%}.subpage-hero>.section-kicker,.subpage-hero>h1,.subpage-hero>.subpage-lead{z-index:2}}
+@media(prefers-reduced-motion:reduce){.hero-team-photo{animation:none;opacity:.65;transform:none;will-change:auto}}
+
