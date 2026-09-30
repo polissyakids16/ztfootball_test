@@ -34,7 +34,7 @@ a{color:inherit;text-decoration:none}button,input,select{font:inherit}button,a{-
 }
 .photo-four{
   background-image:url('images/team5.jpg');
-  background-position:center 75%; /* підняти фото вище */
+  background-position:center 60%; /* підняти фото вище */
   animation-delay:15s
 }
 @keyframes hero-slideshow{0%,32%{opacity:1}36%,96%{opacity:0}100%{opacity:1}}
