@@ -32,6 +32,11 @@ a{color:inherit;text-decoration:none}button,input,select{font:inherit}button,a{-
   background-position:center 75%; /* підняти фото вище */
   animation-delay:10s
 }
+.photo-four{
+  background-image:url('images/team5.jpg');
+  background-position:center 75%; /* підняти фото вище */
+  animation-delay:15s
+}
 @keyframes hero-slideshow{0%,32%{opacity:1}36%,96%{opacity:0}100%{opacity:1}}
 .hero-content{position:relative;z-index:1;width:min(var(--max),100%);padding:100px 28px 110px;margin:0 auto}.eyebrow,.section-kicker{font:700 10px var(--display);letter-spacing:2.1px}.eyebrow{color:#d7e5d8;display:flex;align-items:center;gap:10px;margin-bottom:26px}
 .eyebrow span{width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 14px var(--green)}h1,h2,h3{font-family:var(--display);letter-spacing:-.055em}h1{font-size:clamp(58px,8.1vw,104px);line-height:.99;font-weight:800;max-width:780px}h1 em{font-style:normal;color:var(--green)}.hero-copy{font-size:16px;line-height:1.7;color:#e1e8e1;max-width:440px;margin-top:27px}.hero-actions{display:flex;align-items:center;gap:28px;margin-top:34px}.button{min-height:50px;border:0;display:inline-flex;align-items:center;justify-content:center;gap:28px;padding:0 20px;border-radius:3px;font-size:12px;font-weight:700;cursor:pointer;transition:transform .2s,background .2s,color .2s}.button:hover{transform:translateY(-3px)}.button-light{background:var(--green);color:var(--forest)}.button-light:hover,.button-green:hover{background:#c3ff84}.button span{font-size:17px}.text-link{font-size:12px;font-weight:600;color:#eef3ed}.text-link span{color:var(--green);margin-left:8px}.hero-note{position:absolute;bottom:34px;left:max(28px,calc((100vw - var(--max))/2 + 28px));display:flex;align-items:center;gap:12px;color:#c5d0c6;font-size:9px;letter-spacing:2px}.note-line{width:32px;height:1px;background:var(--green)}.hero-number{position:absolute;right:max(28px,calc((100vw - var(--max))/2 + 28px));bottom:10px;color:rgba(255,255,255,.12);font:800 clamp(90px,16vw,200px)/.9 var(--display);letter-spacing:-.1em}.hero-number span{color:var(--green);font-size:.45em;letter-spacing:-.06em}
@@ -113,3 +118,34 @@ a{color:inherit;text-decoration:none}button,input,select{font:inherit}button,a{-
 @media(max-width:700px){.hero-team-photo{width:clamp(38px,12vw,58px);height:clamp(48px,15vw,72px);border-radius:8px;opacity:.55}.hero-team-photo-01{left:3%;top:7%}.hero-team-photo-02{right:3%;top:6%}.hero-team-photo-03{left:5%;bottom:5%}.hero-team-photo-04{right:7%;bottom:5%}.hero-team-photo-05{left:27%;top:4%}.hero-team-photo-06{right:27%;bottom:3%}.hero-team-photo-07{right:3%;top:40%}.subpage-hero>.section-kicker,.subpage-hero>h1,.subpage-hero>.subpage-lead{z-index:2}}
 @media(prefers-reduced-motion:reduce){.hero-team-photo{animation:none;opacity:.65;transform:none;will-change:auto}}
 
+
+/* Full-width homepage event and gallery layouts */
+.next-match .next-match-inner{width:100%;max-width:none}
+.next-match-events{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:1.5rem}
+.next-match-events>.match-card{margin-top:0;min-width:0}
+.match-event-card{display:flex;flex-direction:column;justify-content:center;gap:14px}
+.match-event-card h3{font:800 clamp(1.35rem,3vw,2rem)/1.2 Manrope,sans-serif}
+.match-event-card p{color:#e1e8e1}
+.match-event-card .section-kicker{color:#b8d596}
+.gallery-section.section-pad{padding-inline:0}
+.gallery-section .gallery-heading{padding-inline:max(1.25rem,calc((100vw - 1180px)/2))}
+.gallery-section .gallery-grid{width:100%;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.gallery-section .gallery-tile,.gallery-section .gallery-tile img{width:100%;min-width:0;min-height:0;height:auto;aspect-ratio:1/1}
+.gallery-section .gallery-tile img{height:100%}
+@media(max-width:700px){.next-match-events{grid-template-columns:1fr;gap:12px}.gallery-section .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}}
+@media(max-width:360px){.gallery-section .gallery-grid{grid-template-columns:1fr}}
+
+/* Keep slideshow and gallery photos bright and unobscured */
+.hero-shade:after{display:none}
+.hero-content{text-shadow:0 2px 18px rgba(0,0,0,.48)}
+.gallery-section .gallery-tile:after{display:none}
+.gallery-section .gallery-tile img,.gallery-section .gallery-tile:hover img{filter:none}
+.gallery-section .gallery-tile>span{text-shadow:0 2px 8px rgba(0,0,0,.85)}
+
+/* Two editable match cards, following the reference design */
+.next-match-events{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:1.5rem}
+.next-match-events>.match-card{margin-top:0;min-width:0}
+.match-age-label{color:#b8d596;font:700 10px Manrope,sans-serif;letter-spacing:1.6px;text-align:center}
+.next-match-events .match-card{gap:1rem}
+.next-match-events .match-crest img{display:block}
+@media(max-width:700px){.next-match-events{grid-template-columns:1fr;gap:12px}}
