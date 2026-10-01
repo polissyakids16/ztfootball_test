@@ -163,3 +163,99 @@ a{color:inherit;text-decoration:none}button,input,select{font:inherit}button,a{-
   #tournaments-menu>.nested-dropdown>.nested-submenu a{min-height:32px;justify-content:flex-start;padding:6px 10px}
 }
 
+/* =========================================================
+   HERO — повне фото на мобільних телефонах
+   ========================================================= */
+@media (max-width: 700px) {
+
+  .hero {
+    min-height: 620px;
+    height: auto;
+    background: #193127;
+  }
+
+  .hero-shade {
+    background: #193127;
+  }
+
+  .hero-photo {
+  position: absolute;
+  inset: 0;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-color: #10271d;
+
+  opacity: 0;
+  animation: hero-slideshow 20s infinite;
+}
+
+/* 1 фото */
+.photo-one {
+  animation-delay: 0s;
+}
+
+/* 2 фото */
+.photo-two {
+  animation-delay: 5s;
+}
+
+/* 3 фото */
+.photo-three {
+  animation-delay: 10s;
+}
+
+/* 4 фото */
+.photo-four {
+  animation-delay: 15s;
+}
+
+
+/* Плавне переключення без зеленого проміжку */
+@keyframes hero-slideshow {
+
+  /* фото з'являється */
+  0% {
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  /* фото залишається */
+  25% {
+    opacity: 1;
+  }
+
+  /* плавно зникає */
+  30% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+  /* Затемнення поверх фото */
+  .hero-shade:after {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(10, 27, 19, .88) 0%,
+        rgba(10, 27, 19, .48) 48%,
+        rgba(10, 27, 19, .18) 100%
+      ),
+      linear-gradient(
+        0deg,
+        rgba(10, 27, 19, .55),
+        transparent 45%
+      );
+  }
+
+  .hero-content {
+    padding: 70px 22px 120px;
+  }
+}
