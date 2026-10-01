@@ -46,7 +46,11 @@
           <li><a href="age-u10-u11.html">U11</a></li>
         </ul>
       </li>
-        <li class="has-dropdown"><button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="tournaments-menu">Турніри <span aria-hidden="true">⌄</span></button><ul class="submenu" id="tournaments-menu"><li><a href="tournaments-played.html">Зіграні</a></li><li><a href="tournaments-active.html">Діючі</a></li><li><a href="tournaments-upcoming.html">Заплановані</a></li></ul></li>
+        <li class="has-dropdown"><button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="tournaments-menu">Турніри <span aria-hidden="true">⌄</span></button><ul class="submenu" id="tournaments-menu">
+          <li class="has-dropdown nested-dropdown"><button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="played-groups-menu">Зіграні <span aria-hidden="true">›</span></button><ul class="submenu nested-submenu" id="played-groups-menu"><li><a href="tournaments-played-u10.html">U10</a></li><li><a href="tournaments-played-u11.html">U11</a></li></ul></li>
+          <li class="has-dropdown nested-dropdown"><button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="active-groups-menu">Діючі <span aria-hidden="true">›</span></button><ul class="submenu nested-submenu" id="active-groups-menu"><li><a href="tournaments-active-u10.html">U10</a></li><li><a href="tournaments-active-u11.html">U11</a></li></ul></li>
+          <li class="has-dropdown nested-dropdown"><button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="upcoming-groups-menu">Заплановані <span aria-hidden="true">›</span></button><ul class="submenu nested-submenu" id="upcoming-groups-menu"><li><a href="tournaments-upcoming-u10.html">U10</a></li><li><a href="tournaments-upcoming-u11.html">U11</a></li></ul></li>
+        </ul></li>
         <li class="has-dropdown"><button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="gallery-menu">Галерея <span aria-hidden="true">⌄</span></button><ul class="submenu" id="gallery-menu"><li><a href="gallery-training.html">Тренування</a></li><li><a href="gallery-tournaments.html">Турніри</a></li></ul></li>
         <li><a href="contacts.html">Контакти</a></li>
         <li class="nav-cta"><a href="contacts.html">Записатися <span aria-hidden="true">↗</span></a></li>
@@ -201,15 +205,21 @@
       menuButton.setAttribute('aria-label', 'Відкрити меню');
       menu.classList.remove('is-open');
     }));
+    const closeDropdown = item => {
+      item.classList.remove('submenu-open');
+      item.querySelectorAll('.nav-dropdown-toggle').forEach(toggle => toggle.setAttribute('aria-expanded', 'false'));
+      item.querySelectorAll('.submenu-open').forEach(openItem => openItem.classList.remove('submenu-open'));
+    };
     document.querySelectorAll('.nav-dropdown-toggle').forEach(button => button.addEventListener('click', () => {
-      const expanded = button.getAttribute('aria-expanded') === 'true';
-      document.querySelectorAll('.nav-dropdown-toggle').forEach(other => {
-        other.setAttribute('aria-expanded', 'false');
-        other.closest('.has-dropdown').classList.remove('submenu-open');
+      const item = button.closest('.has-dropdown');
+      const expanded = item.classList.contains('submenu-open');
+      item.parentElement.querySelectorAll(':scope > .has-dropdown.submenu-open').forEach(sibling => {
+        if (sibling !== item) closeDropdown(sibling);
       });
-      if (!expanded) {
+      if (expanded) closeDropdown(item);
+      else {
+        item.classList.add('submenu-open');
         button.setAttribute('aria-expanded', 'true');
-        button.closest('.has-dropdown').classList.add('submenu-open');
       }
     }));
     const lightbox = document.querySelector('.lightbox');
@@ -239,6 +249,9 @@
   </script>
 </body>
 </html>
+
+
+
 
 
 
