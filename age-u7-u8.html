@@ -36,7 +36,10 @@
                               <p class="subpage-lead">7–8 років років · футбол, розвиток і команда</p></section>
                               <section class="subpage-content">
                                     <div class="section-kicker">ПРО ГРУПУ</div>
-                                    <div class="story-panel"><h2>Зростаємо <span>через гру.</span></h2><p>У цьому віці гравці вдосконалюють ведення м’яча, передачі та удари, а також пробують прості командні рішення. Більше вправ із м’ячем і мініігор допомагає розвивати впевненість та інтерес до футболу.</p>
+                                    <div class="story-panel"><h2>Зростаємо <span>через гру.</span></h2><p>У цьому віці гравці вдосконалюють ведення м’яча, передачі та удари, 
+                  а також пробують прості командні рішення. Більше вправ із м’ячем і мініігор допомагає розвивати 
+                  впевненість та інтерес до футболу. Тренування спрямовані на вдосконалення базових футбольних навичок,
+                  розвиток командної гри та формування спортивної дисципліни.</p>
                                     <a class="button button-green" href="contacts.html">Записатися на тренування <span>↗</span></a></div><div class="section-top roster-heading">
                                           <div>
                                                 <div class="section-kicker">НАША КОМАНДА</div><h2>Гравці <span>U7–U8</span></h2></div><p>Додайте справжні фото та імена гравців, замінивши відповідні файли й підписи.</p></div>
@@ -63,10 +66,23 @@
                                                                   <span>Додайте фото гравця</span></div>
                                                                   <div class="player-meta"><span>ГРАВЕЦЬ 06</span><h3>Ім’я гравця</h3></div></article></div>
                                                                   <p class="gallery-note">Фото очікуються у папці <code>images/players/age-u7-u8/</code> — player-01.jpg … player-06.jpg.</p></section></main>
-                                                                  <footer class="site-footer"><a class="brand" href="index.html"><span class="brand-mark"><img src="images/logo.png" alt="" onerror="this.closest('.brand-mark').classList.add('logo-missing')">
-                                                                  <span class="brand-fallback">PK<small>16</small></span></span>
-                                                                  <span class="brand-name">POLISSYA <b>KIDS 16L</b></span></a>
-                                                                   <!--  <span>Футбол, що об’єднує.</span><a href="#home">НА ПОЧАТОК ↑</a>--><small>© <span id="year">2026</span> Polissya Kids 16L • Created by | Kuzko Anatolii </small></footer><script>
+                                                                  <!-- =========================
+         FOOTER
+         ========================= -->
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand" >
+                <img src="images/logo.png"  alt="Polissya Kids 16L">
+                <div>
+                    <strong>Polissya Kids 16L</strong>
+                    <span>Футбольна команда юних чемпіонів</span>
+                </div>
+            </div>
+            <p>© 2026 Polissya Kids 16L • Created by | Kuzko Anatolii</p>
+        </div>
+      </footer>
+      <script>
 const menuButton=document.querySelector('.menu-toggle'), menu=document.querySelector('.nav-links');
 menuButton.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')==='true';menuButton.setAttribute('aria-expanded',String(!open));menu.classList.toggle('is-open',!open)});
 document.querySelectorAll('.nav-dropdown-toggle').forEach(button=>button.addEventListener('click',()=>{const open=button.getAttribute('aria-expanded')==='true';document.querySelectorAll('.nav-dropdown-toggle').forEach(other=>{other.setAttribute('aria-expanded','false');other.closest('.has-dropdown').classList.remove('submenu-open')});if(!open){button.setAttribute('aria-expanded','true');button.closest('.has-dropdown').classList.add('submenu-open')}}));

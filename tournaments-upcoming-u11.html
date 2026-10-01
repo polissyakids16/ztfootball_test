@@ -33,7 +33,31 @@
                   <span>ТУРНІРНА ТАБЛИЦЯ</span>
                   <span class="status-pill"><i></i> U-10</span></div>
                   <div class="table-scroll">
-                    <table><thead><tr><th>МІСЦЕ</th><th>КОМАНДА</th><th>І</th><th>В</th><th>Н</th><th>П</th><th>З</th><th>П</th><th>Р</th><th>О</th></tr></thead><tbody><tr class="empty-row"><td colspan="10">Додайте результати команд і показники групового етапу</td></tr></tbody></table></div></div><p class="gallery-note">І — ігри, В — перемоги, Н — нічиї, П — поразки, З/П — забиті/пропущені, Р — різниця, О — очки.</p><div class="section-top playoff-heading"><div><div class="section-kicker">ПЛЕЙ-ОФ</div><h2>Вирішальні <span>матчі.</span></h2></div><p>Додайте команди та рахунки після підтвердження результатів.</p></div><div class="match-grid"><article class="match-card"><span>ПІВФІНАЛ 1</span><b>Команда — Команда</b><small>Рахунок: додайте результат</small></article><article class="match-card"><span>ПІВФІНАЛ 2</span><b>Команда — Команда</b><small>Рахунок: додайте результат</small></article><article class="match-card"><span>ГРА ЗА ТРЕТЄ МІСЦЕ</span><b>Команда — Команда</b><small>Рахунок: додайте результат</small></article><article class="match-card"><span>ФІНАЛ</span><b>Команда — Команда</b><small>Рахунок: додайте результат</small></article></div></section></main><footer class="site-footer"><a class="brand" href="index.html"><span class="brand-mark"><img src="images/logo.png" alt="" onerror="this.closest('.brand-mark').classList.add('logo-missing')"><span class="brand-fallback">PK<small>16</small></span></span><span class="brand-name">POLISSYA <b>KIDS 16L</b></span></a> <!--  <span>Футбол, що об’єднує.</span><a href="#home">НА ПОЧАТОК ↑</a>--><small>© <span id="year">2026</span> Polissya Kids 16L • Created by | Kuzko Anatolii </small></footer><script>
+                    <table><thead><tr><th>МІСЦЕ</th><th>КОМАНДА</th><th>І</th><th>В</th><th>Н</th><th>П</th><th>З</th><th>П</th><th>Р</th><th>О</th></tr></thead><tbody><tr class="empty-row"><td colspan="10">Додайте результати команд і показники групового етапу</td></tr></tbody></table></div></div><p class="gallery-note">І — ігри, В — перемоги, Н — нічиї, П — поразки, З/П — забиті/пропущені, Р — різниця, О — очки.</p>
+                    <div class="section-top playoff-heading"><div><div class="section-kicker">ПЛЕЙ-ОФ</div><h2>Вирішальні <span>матчі.</span></h2></div><p>Додайте команди та рахунки після підтвердження результатів.</p></div><div class="match-grid"><article class="match-card"><span>ПІВФІНАЛ 1</span><b>Команда — Команда</b><small>Рахунок: додайте результат</small></article>
+                    <article class="match-card"><span>ПІВФІНАЛ 2</span><b>Команда — Команда</b>
+                    <small>Рахунок: додайте результат</small></article>
+                    <article class="match-card"><span>ГРА ЗА ТРЕТЄ МІСЦЕ</span><b>Команда — Команда</b>
+                    <small>Рахунок: додайте результат</small></article>
+                    <article class="match-card"><span>ФІНАЛ</span><b>Команда — Команда</b>
+                    <small>Рахунок: додайте результат</small></article></div></section></main>
+                    <!-- =========================
+         FOOTER
+         ========================= -->
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand" >
+                <img src="images/logo.png"  alt="Polissya Kids 16L">
+                <div>
+                    <strong>Polissya Kids 16L</strong>
+                    <span>Футбольна команда юних чемпіонів</span>
+                </div>
+            </div>
+            <p>© 2026 Polissya Kids 16L • Created by | Kuzko Anatolii</p>
+        </div>
+      </footer>
+      <script>
 const menuButton=document.querySelector('.menu-toggle'), menu=document.querySelector('.nav-links');
 menuButton.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')==='true';menuButton.setAttribute('aria-expanded',String(!open));menu.classList.toggle('is-open',!open)});
 document.querySelectorAll('.nav-dropdown-toggle').forEach(button=>button.addEventListener('click',()=>{const open=button.getAttribute('aria-expanded')==='true';document.querySelectorAll('.nav-dropdown-toggle').forEach(other=>{other.setAttribute('aria-expanded','false');other.closest('.has-dropdown').classList.remove('submenu-open')});if(!open){button.setAttribute('aria-expanded','true');button.closest('.has-dropdown').classList.add('submenu-open')}}));
