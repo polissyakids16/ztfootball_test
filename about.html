@@ -108,6 +108,64 @@
          ========================= -->
 
         </main>
+        <section class="subpage-content"><div class="section-top"><div>
+        <div class="section-kicker">Інформація по віковим групам</div><h2>Наші <span>тренера.</span></h2></div>
+        <p>Наведіть курсор, щоб наблизити фото. Натисніть на знімок, щоб відкрити його у великому форматі.</p></div>
+        <div class="photo1-grid">
+          <button class="photo1-tile" type="button" aria-label="Відкрити фото 1">
+            <img src="images/trenera/2011-2015.jpg" alt="Тренування: фото 1" loading="lazy" onload="this.parentElement.classList.add('has-photo')" onerror="this.hidden=true">
+            <span class="photo1-placeholder">Додайте фото</span>
+            <span class="photo1-number">01</span></button>
+            <button class="photo1-tile" type="button" aria-label="Відкрити фото 2">
+              <img src="images/trenera/2016.jpg" alt="Тренування: фото 2" loading="lazy" onload="this.parentElement.classList.add('has-photo')" onerror="this.hidden=true">
+              <span class="photo1-placeholder">Додайте фото</span>
+              <span class="photo1-number">02</span></button>
+              <button class="photo1-tile" type="button" aria-label="Відкрити фото 3">
+                <img src="images/trenera/2017-2020.jpg" alt="Тренування: фото 3" loading="lazy" onload="this.parentElement.classList.add('has-photo')" onerror="this.hidden=true">
+                <span class="photo1-placeholder">Додайте фото</span>
+                <span class="photo1-number">03</span></button>
+                <button class="photo1-tile" type="button" aria-label="Відкрити фото 4">
+                  <img src="images/trenera/2019.jpg" alt="Тренування: фото 4" loading="lazy" onload="this.parentElement.classList.add('has-photo')" onerror="this.hidden=true">
+                  <span class="photo1-placeholder">Додайте фото</span>
+                  <span class="photo1-number">04</span></button>
+                  <!--<button class="photo-tile" type="button" aria-label="Відкрити фото 5">
+                    <img src="images/gallery/training/05.jpg" alt="Тренування: фото 5" loading="lazy" onload="this.parentElement.classList.add('has-photo')" onerror="this.hidden=true">
+                    <span class="photo-placeholder">Додайте фото</span>
+                    <span class="photo-number">05</span></button>
+                    <button class="photo-tile" type="button" aria-label="Відкрити фото 6">
+                      <img src="images/gallery/training/06.jpg" alt="Тренування: фото 6" loading="lazy" onload="this.parentElement.classList.add('has-photo')" onerror="this.hidden=true">
+                      <span class="photo-placeholder">Додайте фото</span>
+                      <span class="photo-number">06</span></button>
+                      <button class="photo-tile" type="button" aria-label="Відкрити фото 7">
+                        <img src="images/gallery/training/07.jpg" alt="Тренування: фото 7" loading="lazy" onload="this.parentElement.classList.add('has-photo')" onerror="this.hidden=true">
+                        <span class="photo-placeholder">Додайте фото</span>
+                        <span class="photo-number">07</span></button>
+                        <button class="photo-tile" type="button" aria-label="Відкрити фото 8">
+                          <img src="images/gallery/training/08.jpg" alt="Тренування: фото 8" loading="lazy" onload="this.parentElement.classList.add('has-photo')" onerror="this.hidden=true">
+                          <span class="photo-placeholder">Додайте фото</span>
+                          <span class="photo-number">08</span></button>
+                          <button class="photo-tile" type="button" aria-label="Відкрити фото 9">
+                            <img src="images/gallery/training/09.jpg" alt="Тренування: фото 9" loading="lazy" onload="this.parentElement.classList.add('has-photo')" onerror="this.hidden=true">
+                            <span class="photo-placeholder">Додайте фото</span>
+                            <span class="photo-number">09</span></button>
+                            <button class="photo-tile" type="button" aria-label="Відкрити фото 10">
+                              <img src="images/gallery/training/10.jpg" alt="Тренування: фото 10" loading="lazy" onload="this.parentElement.classList.add('has-photo')" onerror="this.hidden=true">
+                              <span class="photo-placeholder">Додайте фото</span>
+                              <span class="photo-number">10</span></button>
+                              <button class="photo-tile" type="button" aria-label="Відкрити фото 11">
+                                <img src="images/gallery/training/11.jpg" alt="Тренування: фото 11" loading="lazy" onload="this.parentElement.classList.add('has-photo')" onerror="this.hidden=true">
+                                <span class="photo-placeholder">Додайте фото</span>
+                                <span class="photo-number">11</span></button>
+                                <button class="photo-tile" type="button" aria-label="Відкрити фото 12">
+                                  <img src="images/gallery/training/12.jpg" alt="Тренування: фото 12" loading="lazy" onload="this.parentElement.classList.add('has-photo')" onerror="this.hidden=true">
+                                  <span class="photo-placeholder">Додайте фото</span>
+                                  <span class="photo-number">12</span></button>-->
+                                  <dialog class="lightbox" aria-label="Перегляд фото">
+        <button class="lightbox-close" type="button" aria-label="Закрити фото">×</button>
+        <img class="lightbox-image" src="" alt=""></dialog>
+                                </div>
+      <!--<p class="gallery-note">Додайте фото у папку <code>images/gallery/training/</code> з назвами 01.jpg–12.jpg.</p>-->
+      </section>
         <section class="fields-section" aria-labelledby="fields-title">
           <h2 class="fields-title" id="fields-title">Наші футбольні поля</h2>
           <div class="fields-grid">
@@ -157,5 +215,6 @@ const reveal=document.querySelectorAll('.subpage-content > *, .player-card, .pho
   }));
   fieldDialog.querySelector('.lightbox-close').addEventListener('click', () => fieldDialog.close());
   fieldDialog.addEventListener('click', event => { if (event.target === fieldDialog) fieldDialog.close(); });
+  const box=document.querySelector('.lightbox'), big=box.querySelector('img');document.querySelectorAll('.photo1-tile').forEach(tile=>tile.addEventListener('click',()=>{const img=tile.querySelector('img');if(img.hidden)return;big.src=img.currentSrc||img.src;big.alt=img.alt;box.showModal()}));box.querySelector('button').addEventListener('click',()=>box.close());box.addEventListener('click',e=>{if(e.target===box)box.close()});
 </script></body></html>
 
