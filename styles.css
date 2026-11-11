@@ -753,3 +753,143 @@ footer {
     padding-bottom: 6px;
   }
 }
+
+
+/* =====================================
+   НАСТУПНИЙ ТУРНІР — GREEN / BLACK
+===================================== */
+
+.next-match {
+    position: relative;
+    width: 100%;
+    padding: 75px 25px 85px;
+    background: #080f0b;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.next-match-container {
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.next-match-heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.next-match-heading .section-kicker {
+    display: inline-block;
+    color: #35d66f;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.next-match-heading h2 {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 900;
+    text-transform: uppercase;
+    margin: 0 0 15px;
+    color: #ffffff;
+}
+
+.next-match-heading h2 span {
+    color: #35d66f;
+}
+
+.next-match-heading p {
+    color: #b8c5bc;
+    font-size: 17px;
+    margin: 0;
+}
+
+/* СІТКА КОМАНД */
+
+.tournament-teams {
+    display: grid;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    gap: 15px;
+    align-items: stretch;
+}
+
+.tournament-team {
+    min-width: 0;
+    text-align: center;
+    padding: 20px 8px;
+    background: #111c15;
+    border: 1px solid rgba(53, 214, 111, 0.22);
+    border-radius: 14px;
+    transition: all 0.35s ease;
+}
+
+.tournament-team:hover {
+    transform: translateY(-8px);
+    background: #17271c;
+    border-color: #35d66f;
+    box-shadow: 0 10px 30px rgba(53, 214, 111, 0.16);
+}
+
+.tournament-team img {
+    display: block;
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+    margin: 0 auto 15px;
+    transition: transform 0.35s ease;
+}
+
+.tournament-team:hover img {
+    transform: scale(1.12);
+}
+
+.tournament-team h3 {
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+/* ПЛАНШЕТИ */
+
+@media (max-width: 1100px) {
+    .tournament-teams {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 15px;
+    }
+}
+
+/* МОБІЛЬНІ ТЕЛЕФОНИ */
+
+@media (max-width: 600px) {
+    .next-match {
+        padding: 50px 15px;
+    }
+
+    .next-match-heading {
+        margin-bottom: 30px;
+    }
+
+    .tournament-teams {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .tournament-team {
+        padding: 18px 10px;
+    }
+
+    .tournament-team img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 12px;
+    }
+
+    .tournament-team h3 {
+        font-size: 13px;
+    }
+}
+
