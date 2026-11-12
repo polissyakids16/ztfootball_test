@@ -756,7 +756,7 @@ footer {
 
 
 /* =====================================
-   НАСТУПНИЙ ТУРНІР — GREEN / BLACK
+   Заремити після турніра НАСТУПНИЙ ТУРНІР — GREEN / BLACK
 ===================================== */
 
 .next-match {
@@ -893,3 +893,22 @@ footer {
     }
 }
 
+
+
+/* Desktop navigation: slanted dividers and clear hover state. */
+@media (min-width:701px){
+  .site-header .nav-wrap{gap:12px}
+  .site-header .nav-links{height:100%;flex:1;justify-content:center;gap:0}
+  .site-header .nav-links>li{height:100%;display:flex;align-items:stretch}
+  .site-header .nav-links>li:not(.nav-cta)::after{content:"";position:absolute;z-index:4;top:15%;right:-1px;width:2px;height:70%;background:linear-gradient(transparent,var(--green) 16%,var(--green) 84%,transparent);transform:skewX(-25deg);pointer-events:none}
+  .site-header .nav-links>li:not(.nav-cta)>a,
+  .site-header .nav-links>li>.nav-dropdown-toggle{display:flex;align-items:center;height:100%;padding:0 clamp(10px,1.15vw,18px);white-space:nowrap;clip-path:polygon(9px 0,100% 0,calc(100% - 9px) 100%,0 100%);transition:background-color .2s ease,color .2s ease}
+  .site-header .nav-links>li:not(.nav-cta)>a:hover,
+  .site-header .nav-links>li:not(.nav-cta)>.nav-dropdown-toggle:hover,
+  .site-header .nav-links>li:not(.nav-cta)>.nav-dropdown-toggle[aria-expanded="true"]{background:var(--green);color:var(--forest)}
+  .site-header .nav-links>li:not(.nav-cta)>.nav-dropdown-toggle:hover span,
+  .site-header .nav-links>li:not(.nav-cta)>.nav-dropdown-toggle[aria-expanded="true"] span{color:var(--forest)}
+  .site-header .nav-links>li:not(.nav-cta)>a:focus-visible,
+  .site-header .nav-links>li>.nav-dropdown-toggle:focus-visible{outline:2px solid var(--green);outline-offset:-3px}
+}
+@media(prefers-reduced-motion:reduce){.site-header .nav-links>li:not(.nav-cta)>a,.site-header .nav-links>li>.nav-dropdown-toggle{transition:none}}
