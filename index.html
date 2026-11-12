@@ -26,6 +26,17 @@
     .match-detail { display: inline-flex; align-items: center; gap: .55rem; padding: .75rem 1rem; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; background: rgba(255,255,255,.06); font-weight: 700; }
     .match-detail-icon { color: #b8d596; }
     @media (max-width: 520px) { .match-teams { gap: .5rem; } .match-card { border-radius: 1rem; } .match-detail { font-size: .9rem; } }
+
+    /* Original full-screen photo backgrounds with centered side arrows. */
+    .hero-shade .hero-photo{opacity:0!important;animation:none!important;transition:opacity .45s ease}
+    .hero-shade .hero-photo.is-active{opacity:1!important}
+    .hero-slide-controls{position:absolute;z-index:20;inset:0;pointer-events:none}
+    .hero-slide-arrow{position:absolute;top:50%;display:grid;place-items:center;width:50px;height:50px;border:1px solid rgba(255,255,255,.72);border-radius:50%;background:rgba(9,29,19,.58);color:#fff;font-size:30px;line-height:1;cursor:pointer;pointer-events:auto;transform:translateY(-50%);transition:background .18s,transform .18s}
+    .hero-slide-prev{left:clamp(14px,3vw,42px)}.hero-slide-next{right:clamp(14px,3vw,42px)}
+    .hero-slide-arrow:hover{background:#79bb41;color:#10271d;transform:translateY(-50%) scale(1.06)}
+    .hero-slide-arrow:focus-visible{outline:3px solid #b8f34a;outline-offset:3px}
+    @media(max-width:700px){.hero-slide-arrow{width:42px;height:42px;font-size:25px}.hero-slide-prev{left:10px}.hero-slide-next{right:10px}}
+    @media(prefers-reduced-motion:reduce){.hero-shade .hero-photo,.hero-slide-arrow{transition:none}}
   </style>
 </head>
 <body>
@@ -65,7 +76,11 @@
 
   <main>
     <section class="hero" id="home">
-      <div class="hero-shade" aria-hidden="true"><span class="hero-photo photo-one"></span><span class="hero-photo photo-two"></span><span class="hero-photo photo-three"></span><span class="hero-photo photo-four"></span></div>
+      <div class="hero-shade" aria-hidden="true"><span class="hero-photo photo-one is-active"></span><span class="hero-photo photo-two"></span><span class="hero-photo photo-three"></span><span class="hero-photo photo-four"></span></div>
+      <div class="hero-slide-controls" aria-label="Перемикання фото">
+        <button class="hero-slide-arrow hero-slide-prev" type="button" aria-label="Попереднє фото">‹</button>
+        <button class="hero-slide-arrow hero-slide-next" type="button" aria-label="Наступне фото">›</button>
+      </div>
       <div class="hero-content">
         <p class="eyebrow"><span></span> Футбольна школа · Polissya Kids 16L</p>
         <h1>Твоя гра.<br><em>Твій характер.</em></h1>
@@ -354,6 +369,25 @@
       revealItems.forEach(item => revealObserver.observe(item));
     } else revealItems.forEach(item => item.classList.add('is-visible'));
     document.querySelector('#year').textContent = new Date().getFullYear();
+  </script>
+  <script>
+    (() => {
+      const photos = [...document.querySelectorAll('.hero-shade .hero-photo')];
+      const previous = document.querySelector('.hero-slide-prev');
+      const next = document.querySelector('.hero-slide-next');
+      if (!photos.length || !previous || !next) return;
+      let current = Math.max(0, photos.findIndex(photo => photo.classList.contains('is-active')));
+      let timer;
+      const show = direction => {
+        photos[current].classList.remove('is-active');
+        current = (current + direction + photos.length) % photos.length;
+        photos[current].classList.add('is-active');
+      };
+      const restart = () => { window.clearInterval(timer); timer = window.setInterval(() => show(1), 5000); };
+      previous.addEventListener('click', () => { show(-1); restart(); });
+      next.addEventListener('click', () => { show(1); restart(); });
+      restart();
+    })();
   </script>
 </body>
 </html>
