@@ -376,7 +376,15 @@
           <a href="https://www.instagram.com/polissya_kids?stkn=ZnU2c2I5cGNsd2pz" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 2h9.6A5.2 5.2 0 0 1 22 7.2v9.6a5.2 5.2 0 0 1-5.2 5.2H7.2A5.2 5.2 0 0 1 2 16.8V7.2A5.2 5.2 0 0 1 7.2 2Zm0 2A3.2 3.2 0 0 0 4 7.2v9.6A3.2 3.2 0 0 0 7.2 20h9.6a3.2 3.2 0 0 0 3.2-3.2V7.2A3.2 3.2 0 0 0 16.8 4H7.2Zm4.8 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.2-3.5a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Z"/></svg></a>
           <a href="https://www.tiktok.com/@polissya.kids?_r=1&_t=ZS-99l5MeDBx6l" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.6 6.4a6.7 6.7 0 0 1-4.2-4.2V1h-4.1v14.2a2.8 2.8 0 1 1-2.8-2.8c.4 0 .8.1 1.2.2V8.4a7 7 0 0 0-1.2-.1 6.9 6.9 0 1 0 6.9 6.9V8a10.7 10.7 0 0 0 5 1.2V5.1c-.3 0-.5 0-.8-.1Z"/></svg></a>
         </div></div><div class="contact-foot">POLISSYA KIDS 16L <span>✳</span></div></div>
-        <form class="contact-form" action="#" method="get" onsubmit="return false"><label for="name">Як до вас звертатися?</label><input id="name" name="name" type="text" placeholder="Ваше ім’я" autocomplete="name"><label for="phone">Номер для зв’язку</label><input id="phone" name="phone" type="tel" placeholder="Ваш номер телефону" autocomplete="tel"><label for="age-select">Вік дитини</label><select id="age-select" name="age"><option value="" selected disabled>Оберіть вік</option><option>9 років</option><option>10 років</option><option>11 років</option></select><button class="button button-green" type="submit">Записатися на тренування <span>↗</span></button><!--<small>Форма потребує підключення обробника заявок перед публікацією.</small>--></form>
+        <form class="contact-form" id="contact-form">
+          <label for="name">Як до вас звертатися?</label><input id="name" name="name" type="text" placeholder="Ваше ім’я" autocomplete="name" required>
+          <label for="phone">Номер для зв’язку</label><input id="phone" name="phone" type="tel" placeholder="Ваш номер телефону" autocomplete="tel" inputmode="tel" required>
+          <label for="age-select">Вік дитини</label><select id="age-select" name="age" required><option value="" selected disabled>Оберіть вік</option><option value="9 років">9 років</option><option value="10 років">10 років</option><option value="11 років">11 років</option></select>
+          <label class="form-consent"><input type="checkbox" name="consent" required><span>Дозволяю передати ці контактні дані тренеру через WhatsApp, щоб він зв’язався зі мною щодо тренування.</span></label>
+          <button class="button button-green" type="submit">Надіслати заявку у WhatsApp <span>↗</span></button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          <a id="whatsapp-fallback" class="under-link" target="_blank" rel="noopener noreferrer" hidden>Відкрити підготовлене повідомлення у WhatsApp <span>↗</span></a>
+        </form>
       </div>
     </section>
   </main>
@@ -423,6 +431,24 @@
       } else dateElement.textContent = 'Дату буде додано';
       card.querySelector('.match-time').textContent = matchData.time || 'Час уточнюється';
     });
+    const contactForm = document.querySelector('#contact-form');
+    contactForm.addEventListener('submit', event => {
+      event.preventDefault();
+      if (!contactForm.reportValidity()) return;
+      const formData = new FormData(contactForm);
+      const message = [
+        'Вітаю! Хочу записати дитину на тренування Polissya Kids 16L.',
+        `Ім’я одного з батьків: ${formData.get('name').trim()}`,
+        `Телефон для зв’язку: ${formData.get('phone').trim()}`,
+        `Вік дитини: ${formData.get('age')}`
+      ].join('\n');
+      const whatsappUrl = `https://wa.me/380636747864?text=${encodeURIComponent(message)}`;
+      const fallback = document.querySelector('#whatsapp-fallback');
+      fallback.href = whatsappUrl;
+      fallback.hidden = false;
+      document.querySelector('#form-status').textContent = 'Перевірте текст у WhatsApp і натисніть «Надіслати», щоб передати заявку тренеру.';
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    });
     const menuButton = document.querySelector('.menu-toggle');
     const menu = document.querySelector('.nav-links');
     menuButton.addEventListener('click', () => {
@@ -431,11 +457,22 @@
       menuButton.setAttribute('aria-label', expanded ? 'Відкрити меню' : 'Закрити меню');
       menu.classList.toggle('is-open', !expanded);
     });
-    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    const closeMenu = () => {
       menuButton.setAttribute('aria-expanded', 'false');
       menuButton.setAttribute('aria-label', 'Відкрити меню');
       menu.classList.remove('is-open');
-    }));
+    };
+    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        closeMenu();
+        document.querySelectorAll('.has-dropdown.submenu-open').forEach(closeDropdown);
+        menuButton.focus();
+      }
+    });
+    document.addEventListener('click', event => {
+      if (!menu.contains(event.target) && !menuButton.contains(event.target)) closeMenu();
+    });
     const closeDropdown = item => {
       item.classList.remove('submenu-open');
       item.querySelectorAll('.nav-dropdown-toggle').forEach(toggle => toggle.setAttribute('aria-expanded', 'false'));
@@ -486,12 +523,13 @@
       if (!photos.length || !previous || !next) return;
       let current = Math.max(0, photos.findIndex(photo => photo.classList.contains('is-active')));
       let timer;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const show = direction => {
         photos[current].classList.remove('is-active');
         current = (current + direction + photos.length) % photos.length;
         photos[current].classList.add('is-active');
       };
-      const restart = () => { window.clearInterval(timer); timer = window.setInterval(() => show(1), 5000); };
+      const restart = () => { window.clearInterval(timer); if (!reducedMotion) timer = window.setInterval(() => show(1), 5000); };
       previous.addEventListener('click', () => { show(-1); restart(); });
       next.addEventListener('click', () => { show(1); restart(); });
       restart();
